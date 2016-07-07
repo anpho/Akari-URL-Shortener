@@ -1,0 +1,91 @@
+API
+RESTful API Akari
+Shorten a URL
+Methods: Post/Get
+
+API Endpoint: http://api.waa.ai/shorten
+
+Key	Required	Type	Description
+url	required	string	A URL
+custom	optional	string	Custom URL value between 5-30 characters
+private	optional	string	1 or true
+callback	optional	string	Callback for JSONP
+Example Request: 
+http://api.waa.ai/shorten?url=http://dalian.7thstyle.com/2014/11/sora-no-method-ep-7-seventhstyle-001.jpg
+
+Example Response:
+{
+  "data" : {
+    "url"          :  "http:\/\/waa.ai\/4iLm.jpg",
+    "short_code"   :  "4iLm",
+    "extension"    :  "jpg"
+  },
+  "success"        :  true,
+  "status"         :  200
+}
+Upload to Imgur and shorten link
+Methods: Post/Get
+
+API Endpoint: http://api.waa.ai/imgur
+
+Key	Required	Type	Description
+image	required	mixed	A binary file or a URL for an image
+custom	optional	string	Custom URL value between 5-30 characters
+private	optional	string	1 or true
+callback	optional	string	Callback for JSONP
+Example Request: 
+http://api.waa.ai/imgur?image=http://dalian.7thstyle.com/2014/10/gochiusa-blu-ray-vol-6-cover-art-seventhstyle-001.jpg
+
+Example Response:
+{
+  "data" : {
+    "url"          :  "http:\/\/waa.ai\/41gE.jpg",
+    "short_code"   :  "41gE",
+    "extension"    :  "jpg"
+  },
+  "success"  :  true,
+  "status"   :  200
+}
+A quick note
+
+By default, using the API to upload an image to Imgur will strip all EXIF/metadata from the image. The image is uploaded anonymously and not linked to any account.
+
+URL Info
+Method: Get
+
+API Endpoint: http://api.waa.ai/info/{short_code}
+
+Key	Required	Type	Description
+short_code	required	string	URL short code
+callback	optional	string	Callback for JSONP
+Example Request: 
+http://api.waa.ai/info/Le
+
+Example Response:
+{
+  "data" : {
+    "short_code"     :  "Le",
+    "long_url"       :  "http:\/\/yuruyuri.com",
+    "date_created"   :  "2012-08-17",
+    "last_visited"   :  "2014-08-26 08:02:54",
+    "clicks"         :  99,
+    "extension"      :  false,
+    "link"           :  "http:\/\/waa.ai\/Le"
+  },
+  "success"          :  true,
+  "status"           :  200
+}
+Tweetbot
+It's possible to use the Akari Link Shortener as a custom URL shortener and image upload service in Tweetbot for iOS and Mac.
+
+How to set waa.ai as the custom URL shortener:
+
+Open Settings
+Select "Account Settings"
+Select "URL Shortening"
+Select "Custom" and enter the following value: http://api.waa.ai/shorten?url=%@
+How to set waa.ai as the custom image upload:
+Open Settings
+Select "Account Settings"
+Select "Image Upload"
+Select "Custom" and enter the following value: http://api.waa.ai/imgur

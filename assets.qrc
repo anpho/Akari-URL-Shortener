@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource>
+<file>assets/card.qml</file>
+<file>assets/main.qml</file>
+<file>assets/page-about.qml</file>
+<file>assets/Common.qml</file>
+<file>assets/page-settings.qml</file>
+</qresource>
+</RCC>
